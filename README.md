@@ -29,19 +29,21 @@ A modern movie discovery application built with React, Vite, and TMDB API. Featu
 ## 📦 Installation
 
 1. Clone the repository:
-```bash
+```
 git clone https://github.com/DopeGrammerZA/movie-flix-app.git
 
 ```
 
-2. Navigate to the project directory:cd movie-explorer-pro
+2. Install dependencies:
 
-cd movie-explorer-pro2. Install dependencies:
-```bash
+```
 npm install
 ```
 
 3. Run the development server:
-```bash
-npm run dev
 ```
+npm run dev
+
+```
+
+### your app is going to be running on http://localhost:5173/

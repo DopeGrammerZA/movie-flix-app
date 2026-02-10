@@ -1,13 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { formatRuntime, formatCurrency, formatDate } from '../../utils/formatters';
-import { IMAGE_BASE_URL, BACKDROP_SIZES } from '../../utils/constants';
+import { FALLBACK_POSTER, FALLBACK_BACKDROP } from '../../utils/constants';
 import './MovieDetail.css';
 
 const MovieDetail = ({ movie }) => {
-  const backdropUrl = movie.backdrop_path
-    ? `${IMAGE_BASE_URL}${BACKDROP_SIZES.original}${movie.backdrop_path}`
-    : null;
+  const backdropUrl = movie.backdrop_url || FALLBACK_BACKDROP;
+  const posterUrl = movie.poster_url || FALLBACK_POSTER;
 
   const ratingPercentage = Math.round(movie.vote_average * 10);
   const ratingColor = ratingPercentage >= 70 ? 'high' : ratingPercentage >= 50 ? 'medium' : 'low';
@@ -20,6 +19,10 @@ const MovieDetail = ({ movie }) => {
             src={backdropUrl}
             alt={`${movie.title} backdrop`}
             className="backdrop-image"
+            onError={(e) => {
+              e.target.onerror = null;
+              e.target.src = FALLBACK_BACKDROP;
+            }}
           />
           <div className="backdrop-overlay" />
         </div>
@@ -28,9 +31,13 @@ const MovieDetail = ({ movie }) => {
       <div className="detail-content">
         <div className="poster-container">
           <img
-            src={`${IMAGE_BASE_URL}/w342${movie.poster_path}`}
+            src={posterUrl}
             alt={`${movie.title} poster`}
             className="detail-poster"
+            onError={(e) => {
+              e.target.onerror = null;
+              e.target.src = FALLBACK_POSTER;
+            }}
           />
         </div>
 
@@ -107,7 +114,9 @@ MovieDetail.propTypes = {
   movie: PropTypes.shape({
     id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
+    backdrop_url: PropTypes.string,
     backdrop_path: PropTypes.string,
+    poster_url: PropTypes.string,
     poster_path: PropTypes.string,
     vote_average: PropTypes.number.isRequired,
     runtime: PropTypes.number,

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { tmdbService } from '../../services/tmdb';
-import { IMAGE_BASE_URL } from '../../utils/constants';
+import { FALLBACK_PROFILE } from '../../utils/constants';
 import LoadingSpinner from '../common/LoadingSpinner';
 import './CastList.css';
 
@@ -47,13 +47,13 @@ const CastList = ({ movieId }) => {
         <div key={person.id} className="cast-card">
           <div className="cast-image">
             <img
-              src={
-                person.profile_path
-                  ? `${IMAGE_BASE_URL}/w185${person.profile_path}`
-                  : 'https://via.placeholder.com/185x278/0d253f/ffffff?text=No+Image'
-              }
+              src={person.profile_url || FALLBACK_PROFILE}
               alt={person.name}
               loading="lazy"
+              onError={(e) => {
+                e.target.onerror = null;
+                e.target.src = FALLBACK_PROFILE;
+              }}
             />
           </div>
           <div className="cast-info">
