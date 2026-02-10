@@ -1,16 +1,47 @@
-# React + Vite
+# 🎬 Movie Explorer Pro
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern movie discovery application built with React, Vite, and TMDB API. Features a beautiful UI, real-time search, detailed movie information, and responsive design.
 
-Currently, two official plugins are available:
+## ✨ Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 🔍 **Real-time Search** - Debounced search with instant results
+- 🎬 **Movie Details** - Comprehensive information including cast, similar movies, ratings
+- 📱 **Responsive Design** - Works perfectly on all devices
+- ⚡ **Fast Performance** - Optimized with Vite and lazy loading
+- 🎨 **Beautiful UI** - Modern design with smooth animations
+- 🚀 **Pagination** - Infinite scroll for browsing movies
+- 🛡️ **Error Handling** - Graceful error states and loading indicators
 
-## React Compiler
+## 🚀 Live Demo
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+[Add your deployed link here]
 
-## Expanding the ESLint configuration
+## 🛠️ Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **React 18** - Frontend library
+- **Vite** - Build tool and dev server
+- **React Router 6** - Client-side routing
+- **Axios** - HTTP client for API calls
+- **date-fns** - Date formatting
+- **CSS Modules** - Scoped styling
+- **TMDB API** - Movie data source
+
+## 📦 Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/DopeGrammerZA/movie-flix-app.git
+
+```
+
+2. Navigate to the project directory:cd movie-explorer-pro
+
+cd movie-explorer-pro2. Install dependencies:
+```bash
+npm install
+```
+
+3. Run the development server:
+```bash
+npm run dev
+```
