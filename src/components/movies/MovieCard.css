@@ -72,6 +72,10 @@
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  text-overflow: ellipsis;
+  line-clamp: 2;
+  display: box;
+  box-orient: vertical;
   color: white;
 }
 
@@ -94,4 +98,27 @@
   border-radius: 4px;
   font-size: 0.75rem;
   font-weight: 500;
+}
+
+.poster {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+  background: linear-gradient(45deg, #0d253f, #01b4e4);
+  /* Fallback while loading */
+}
+
+/* Add loading animation for images */
+.poster.loading {
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
 }

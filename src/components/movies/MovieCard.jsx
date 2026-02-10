@@ -2,14 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { formatDate } from '../../utils/formatters';
-import { IMAGE_BASE_URL, POSTER_SIZES } from '../../utils/constants';
+import { FALLBACK_POSTER } from '../../utils/constants';
 import './MovieCard.css';
 
 const MovieCard = ({ movie }) => {
-  const posterUrl = movie.poster_path
-    ? `${IMAGE_BASE_URL}${POSTER_SIZES.md}${movie.poster_path}`
-    : 'https://via.placeholder.com/342x513/0d253f/ffffff?text=No+Image';
-
+  const posterUrl = movie.poster_url || FALLBACK_POSTER;
+  
   const ratingPercentage = Math.round(movie.vote_average * 10);
   
   const getRatingColor = () => {
@@ -26,6 +24,10 @@ const MovieCard = ({ movie }) => {
           alt={`${movie.title} poster`}
           loading="lazy"
           className="poster"
+          onError={(e) => {
+            e.target.onerror = null; // Prevent infinite loop
+            e.target.src = FALLBACK_POSTER;
+          }}
         />
         <div className={`rating-badge ${getRatingColor()}`}>
           {ratingPercentage}%
@@ -36,7 +38,11 @@ const MovieCard = ({ movie }) => {
         <h3 className="movie-title">{movie.title}</h3>
         <p className="movie-date">{formatDate(movie.release_date)}</p>
         <div className="movie-genres">
-          {movie.genre_ids?.slice(0, 2).map((genreId) => (
+          {movie.genre_names?.slice(0, 2).map((genre, index) => (
+            <span key={index} className="genre-tag">
+              {genre}
+            </span>
+          )) || movie.genre_ids?.slice(0, 2).map((genreId) => (
             <span key={genreId} className="genre-tag">
               {genreId}
             </span>
@@ -51,10 +57,12 @@ MovieCard.propTypes = {
   movie: PropTypes.shape({
     id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
+    poster_url: PropTypes.string,
     poster_path: PropTypes.string,
     vote_average: PropTypes.number.isRequired,
     release_date: PropTypes.string,
     genre_ids: PropTypes.arrayOf(PropTypes.number),
+    genre_names: PropTypes.arrayOf(PropTypes.string),
   }).isRequired,
 };
 
