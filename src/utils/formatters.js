@@ -20,7 +20,7 @@ export const formatCurrency = (amount) => {
   if (!amount) return 'Unknown';
   return new Intl.NumberFormat('en-US', {
     style: 'currency',
-    currency: 'USD',
+    currency: 'R',
     maximumFractionDigits: 0,
   }).format(amount);
 };
