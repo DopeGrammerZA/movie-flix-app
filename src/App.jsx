@@ -6,8 +6,8 @@ import './App.css';
 
 // Lazy load pages
 const HomePage = lazy(() => import('./pages/HomePage'));
-// const MovieDetailPage = lazy(() => import('./pages/MovieDetailPage'));
-// const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
+const MovieDetailPage = lazy(() => import('./pages/MovieDetailPage'));
+const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
 
 function App() {
   return (
@@ -16,8 +16,8 @@ function App() {
         <Suspense fallback={<LoadingSpinner />}>
           <Routes>
             <Route path="/" element={<HomePage />} />
-            {/* <Route path="/movie/:id" element={<MovieDetailPage />} /> */}
-            {/* <Route path="*" element={<NotFoundPage />} /> */}
+            <Route path="/movie/:id" element={<MovieDetailPage />} />
+            <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </Suspense>
       </MainLayout>
