@@ -1,0 +1,73 @@
+.homepage {
+  animation: fadeIn 0.5s ease;
+}
+
+.hero-section {
+  text-align: center;
+  padding: 3rem 1rem;
+  margin-bottom: 3rem;
+  background: linear-gradient(135deg, rgba(13, 37, 63, 0.9), rgba(1, 180, 228, 0.1));
+  border-radius: 16px;
+  border: 1px solid rgba(1, 180, 228, 0.2);
+}
+
+.hero-title {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  background: linear-gradient(90deg, #01b4e4, #90cea1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-subtitle {
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.8);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.movies-section {
+  margin-top: 2rem;
+}
+
+.section-title {
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+  color: white;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, #01b4e4, #90cea1);
+  border-radius: 2px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+}
